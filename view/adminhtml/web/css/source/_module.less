@@ -1,0 +1,61 @@
+//
+//  Imports
+//  ---------------------------------------------
+
+@import './variables/_colors.less';
+
+@import './module/helper/_mixin.less';
+@import './module/ui/_modal.less';
+
+@import './module/_header.less';
+@import './module/_version.less';
+@import './module/_debug.less';
+
+// For new Styles
+@import './_extends.less';
+
+
+//
+//  Tab styles
+//  ---------------------------------------------
+
+
+.vendiro-section span {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2Ni4wNzkiIGhlaWdodD0iNjMuOTM5IiB2aWV3Qm94PSIwIDAgNjYuMDc5IDYzLjkzOSI+CiAgPGcgaWQ9InZlbmRpcm8tbG9nbyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE3OS4wOTMpIj4KICAgIDxwYXRoIGlkPSJQYXRoXzUiIGRhdGEtbmFtZT0iUGF0aCA1IiBkPSJNMjQ0Ljg4OCw0LjI1NGwtNy4zMzYsMTUuODM0YTIuOTgsMi45OCwwLDEsMS01LjQwNy0yLjUwNWwzLjIyOC02Ljk3MmEyLjk3OCwyLjk3OCwwLDAsMC0yLjctNC4yM0gyMjcuN0EyLjk3MiwyLjk3MiwwLDAsMSwyMjUsNC42NTZsLS4xODQtLjRBMi45NzcsMi45NzcsMCwwLDEsMjI3LjUxNywwSDI0Mi4xN2EyLjk4MywyLjk4MywwLDAsMSwyLjcxOCw0LjI1NFoiIGZpbGw9IiMzNGIxOTIiLz4KICAgIDxwYXRoIGlkPSJQYXRoXzYiIGRhdGEtbmFtZT0iUGF0aCA2IiBkPSJNMjE0LjA0MiwxMi4wNTNsLTIzLjU3NiwxNS42YTIuNjcsMi42NywwLDAsMS0zLjkwOS0xLjExMWwtNy4yMjItMTUuNmEyLjY3MSwyLjY3MSwwLDAsMSwyLjQyNC0zLjc4MWgzMC43OTRhMi42NzEsMi42NzEsMCwwLDEsMS40ODksNC44OTJaIiBmaWxsPSIjMzRiMTkyIi8+CiAgICA8cGF0aCBpZD0iUGF0aF83IiBkYXRhLW5hbWU9IlBhdGggNyIgZD0iTTIyNS4xNzMsMjUuNTg1LDIwOC4xMTUsNjIuMzkxYTIuNjY2LDIuNjY2LDAsMCwxLTQuODQsMEwxOTAuMiwzNC4xNzhhMi42NywyLjY3LDAsMCwxLDEuNjg4LTMuNjkxTDIyMi4wMDYsMjEuOWEyLjY3LDIuNjcsMCwwLDEsMy4xNjcsMy42ODdaIiBmaWxsPSIjMzRiMTkyIi8+CiAgPC9nPgo8L3N2Zz4K");
+  padding-left: 25px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}
+
+.admin__menu .item-menu.parent.level-0 > a:before {
+  font-size: 2rem;
+  padding-top: .2rem;
+}
+
+.magmodules-extensions .title:before {
+  font-size: 1.3rem;
+  padding-top: .2rem;
+}
+
+[data-ui-id="menu-magmodules-core-menu"] strong:before {
+  display: none;
+}
+
+ul[role="menu"] [data-ui-id^="menu-magmodules"] strong:before {
+  font-size: 1.5rem;
+  margin-right: .8rem;
+}
+
+
+//
+//  Common styles
+//  ---------------------------------------------
+form[action*="vendiro"] {
+  .mm-ui-recommend {
+    display: block;
+    padding: 3px 0;
+    color: @mm-ui-color1;
+    font-weight: 600;
+  }
+}

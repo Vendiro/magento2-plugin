@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Vendiro\Connect\Block\Info\Vendiro $block
+ * @see \Vendiro\Connect\Block\Info\Vendiro
+ */
+?>
+<dl class="payment-method">
+    <dt class="title"><?= $block->escapeHtml($block->getMethod()->getTitle()) ?></dt>
+</dl>
+<?= $block->getChildHtml() ?>

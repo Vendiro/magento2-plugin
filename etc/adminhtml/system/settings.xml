@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="settings" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Settings</label>
+        <field id="heading_orders" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Order Import</label>
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Design\Heading</frontend_model>
+        </field>
+        <field id="import_orders" translate="label comment" type="select" sortOrder="11" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Import orders</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>vendiro/settings/import_orders</config_path>
+        </field>
+        <field id="confirm_shipment" translate="label comment" type="select" sortOrder="12" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Confirm shipment</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>vendiro/settings/confirm_shipment</config_path>
+        </field>
+        <field id="upload_invoice" translate="label comment" type="select" sortOrder="14" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Upload invoice</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>vendiro/settings/upload_invoice</config_path>
+        </field>
+        <field id="default_shipment_method" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Select your default shipment provider</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\Carriers</source_model>
+            <config_path>vendiro/settings/default_shipment_method</config_path>
+        </field>
+        <field id="heading_stock" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Stock Handling</label>
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Design\Heading</frontend_model>
+        </field>
+        <field id="update_stock" translate="label comment" type="select" sortOrder="21" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Update stock</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>vendiro/settings/update_inventory</config_path>
+        </field>
+        <field id="update_information" translate="label" type="button" sortOrder="24" showInDefault="1" showInWebsite="0" showInStore="0">
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Config\Button\Information</frontend_model>
+        </field>
+    </group>
+</include>

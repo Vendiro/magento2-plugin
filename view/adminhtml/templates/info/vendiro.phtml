@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Vendiro\Connect\Block\Info\Vendiro $block
+ * @see \Vendiro\Connect\Block\Info\Vendiro
+ */
+$specificInfo = $block->getSpecificInformation();
+?>
+<p><?= $block->escapeHtml($block->getMethod()->getTitle()) ?></p>
+<table class="data-table admin__table-secondary">
+    <tbody>
+    <?php if ($marketplaceName = $block->getInfo()->getAdditionalInformation('marketplace_name')): ?>
+        <tr>
+            <th><?= $block->escapeHtml(__('Marketplace Name')); ?></th>
+            <td><?= $block->escapeHtml($marketplaceName); ?></td>
+        </tr>
+    <?php endif; ?>
+    <?php if ($marketplaceOrderId = $block->getInfo()->getAdditionalInformation('marketplace_order_id')): ?>
+        <tr>
+            <th><?= $block->escapeHtml(__('Marketplace Order Id')); ?></th>
+            <td><?= $block->escapeHtml($marketplaceOrderId); ?></td>
+        </tr>
+    <?php endif; ?>
+    <?php if ($marketplaceReference = $block->getInfo()->getAdditionalInformation('marketplace_reference')): ?>
+        <tr>
+            <th><?= $block->escapeHtml(__('Marketplace Reference')); ?></th>
+            <td><?= $block->escapeHtml($marketplaceReference); ?></td>
+        </tr>
+    <?php endif; ?>
+    <?php if ($marketplaceId = $block->getInfo()->getAdditionalInformation('marketplace_id')): ?>
+        <tr>
+            <th><?= $block->escapeHtml(__('Marketplace Id')); ?></th>
+            <td><?= $block->escapeHtml(($marketplaceId)); ?></td>
+        </tr>
+    <?php endif; ?>
+    </tbody>
+</table>
+<?= $block->getChildHtml() ?>

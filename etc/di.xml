@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Carrier Repository -->
+    <preference for="Vendiro\Connect\Api\Carrier\RepositoryInterface" type="Vendiro\Connect\Model\Carrier\Repository" />
+    <preference for="Vendiro\Connect\Api\Carrier\DataInterface" type="Vendiro\Connect\Model\Carrier\Data" />
+    <preference for="Vendiro\Connect\Api\Carrier\SearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <!-- Stock Repository -->
+    <preference for="Vendiro\Connect\Api\Stock\RepositoryInterface" type="Vendiro\Connect\Model\Stock\Repository" />
+    <preference for="Vendiro\Connect\Api\Stock\DataInterface" type="Vendiro\Connect\Model\Stock\Data" />
+    <preference for="Vendiro\Connect\Api\Stock\SearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <!-- Order Repository-->
+    <preference for="Vendiro\Connect\Api\Order\RepositoryInterface" type="Vendiro\Connect\Model\Order\Repository" />
+    <preference for="Vendiro\Connect\Api\Order\DataInterface" type="Vendiro\Connect\Model\Order\Data" />
+    <preference for="Vendiro\Connect\Api\Order\SearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <!-- TrackQueue Repository -->
+    <preference for="Vendiro\Connect\Api\TrackQueue\RepositoryInterface" type="Vendiro\Connect\Model\TrackQueue\Repository" />
+    <preference for="Vendiro\Connect\Api\TrackQueue\DataInterface" type="Vendiro\Connect\Model\TrackQueue\Data" />
+    <preference for="Vendiro\Connect\Api\TrackQueue\SearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <!-- Marketplace Repository -->
+    <preference for="Vendiro\Connect\Api\Marketplace\RepositoryInterface" type="Vendiro\Connect\Model\Marketplace\Repository" />
+    <preference for="Vendiro\Connect\Api\Marketplace\DataInterface" type="Vendiro\Connect\Model\Marketplace\Data" />
+    <preference for="Vendiro\Connect\Api\Marketplace\SearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <!-- Invoice Repository -->
+    <preference for="Vendiro\Connect\Api\Invoice\RepositoryInterface" type="Vendiro\Connect\Model\Invoice\Repository" />
+    <preference for="Vendiro\Connect\Api\Invoice\DataInterface" type="Vendiro\Connect\Model\Invoice\Data" />
+    <preference for="Vendiro\Connect\Api\Invoice\SearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <!-- Config Repository-->
+    <preference for="Vendiro\Connect\Api\Config\RepositoryInterface" type="Vendiro\Connect\Model\Config\Repository" />
+
+    <!-- Log Repository-->
+    <preference for="Vendiro\Connect\Api\Log\RepositoryInterface" type="Vendiro\Connect\Model\Log\Repository" />
+
+    <!-- Extends Curl with PUT and DEL methods -->
+    <preference for="Magento\Framework\HTTP\Client\Curl" type="Vendiro\Connect\Model\HTTP\Client\CurlExtra"/>
+
+    <!-- Loggers -->
+    <type name="Vendiro\Connect\Logger\ErrorLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">VendiroError</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Vendiro\Connect\Logger\Handler\Error</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Vendiro\Connect\Logger\DebugLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">VendiroDebug</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Vendiro\Connect\Logger\Handler\Debug</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Command List -->
+    <type name="Magento\Framework\Console\CommandList">
+       <arguments>
+           <argument name="commands" xsi:type="array">
+               <item name="VendiroImportOrders" xsi:type="object">Vendiro\Connect\Console\Command\ImportOrders</item>
+               <item name="VendiroMigrateOrders" xsi:type="object">Vendiro\Connect\Console\Command\MigrateOrders</item>
+           </argument>
+       </arguments>
+   </type>
+
+    <type name="Vendiro\Connect\Console\Command\ImportOrders">
+        <arguments>
+            <argument name="configProvider" xsi:type="object">Vendiro\Connect\Api\Config\RepositoryInterface\Proxy</argument>
+            <argument name="orderImportService" xsi:type="object">Vendiro\Connect\Service\Order\Import\Proxy</argument>
+        </arguments>
+    </type>
+
+    <!-- Plugins -->
+    <type name="Magento\Sales\Api\Data\ShipmentInterface">
+        <plugin name="VendiroShipmentCreate" type="Vendiro\Connect\Plugin\Shipment\Save" />
+    </type>
+    <type name="Magento\Sales\Api\ShipmentRepositoryInterface">
+        <plugin name="VendiroShipmentCreate" type="Vendiro\Connect\Plugin\Shipment\Save" />
+    </type>
+    <type name="Magento\Sales\Model\Order\Shipment\Track">
+        <plugin name="VendiroShipmentCreate" type="Vendiro\Connect\Plugin\Shipment\Delete" />
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <plugin name="VendiroOrderGridCollection" type="Vendiro\Connect\Plugin\Order\GridCollection" sortOrder="10" disabled="false"/>
+    </type>
+
+    <type name="Vendiro\Connect\Webservices\Endpoints\AbstractEndpoint">
+        <arguments>
+            <argument name="restApi" xsi:type="object">Vendiro\Connect\Webservices\Rest</argument>
+        </arguments>
+    </type>
+
+    <!-- Product stock Indexer Block Start -->
+    <type name="\Magento\Catalog\Model\Indexer\Product\Eav">
+        <plugin name="bindStockIndexer" type="\Vendiro\Connect\Plugin\Catalog\Model\Indexer\Product\Eav\BindStockIndexer" />
+    </type>
+    <type name="\Magento\Catalog\Controller\Adminhtml\Product\MassDelete">
+        <plugin name="bindStockIndexerMassDelete" type="\Vendiro\Connect\Plugin\Catalog\Controller\Adminhtml\Product\MassDelete\BindStockIndexer" />
+    </type>
+    <type name="\Magento\CatalogInventory\Model\Indexer\Stock">
+        <plugin name="bindStockIndexerInventory" type="\Vendiro\Connect\Plugin\CatalogInventory\Model\Indexer\Stock\BindStockIndexer" />
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="vendiro_stock_listing_data_source" xsi:type="string">Vendiro\Connect\Model\Stock\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Vendiro\Connect\Model\Stock\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vendiro_stock</argument>
+            <argument name="resourceModel" xsi:type="string">Vendiro\Connect\Model\Stock\Collection</argument>
+        </arguments>
+    </type>
+    <!-- Product stock Block End -->
+</config>

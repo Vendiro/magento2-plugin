@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="vendiro_stock" view_id="vendiro_stock" class="\Vendiro\Connect\Model\Stock\Indexer">
+        <title translate="true">Vendiro Stock</title>
+        <description translate="true">Vendiro Stock</description>
+    </indexer>
+</config>

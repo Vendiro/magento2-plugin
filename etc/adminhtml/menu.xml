@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vendiro_Connect::general"
+             title="Vendiro"
+             module="Vendiro_Connect"
+             sortOrder="200"
+             resource="Vendiro_Connect::general"
+             parent="Magento_Backend::marketing"
+        />
+        <add id="Vendiro_Connect::stock_updater"
+             title="Stock Updater"
+             module="Vendiro_Connect"
+             sortOrder="10"
+             parent="Vendiro_Connect::general"
+             resource="Vendiro_Connect::general"
+             action="vendiro/stock/index"
+        />
+    </menu>
+</config>

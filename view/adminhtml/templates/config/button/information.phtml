@@ -1,0 +1,41 @@
+<?php
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var $block \Vendiro\Connect\Block\Adminhtml\Config\Button\Information */ ?>
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function (jQuery) {
+        var resultSpan = jQuery('.check-information-wrapper > #result_api');
+        jQuery('#vendiro-button_information').click(function () {
+            var params = {
+                form_key: "<?= /* @noEscape */ $block->getFormKey() ?>",
+                isAjax: true
+            };
+            jQuery.ajax({
+                showLoader: true,
+                url: "<?= /* @noEscape */ $block->getAjaxUrl() ?>",
+                data: params,
+                dataType: 'json'
+            }).done(function (response) {
+                resultSpan.find('.result').show();
+                resultSpan[0].querySelector('.result').innerHTML = response.message;
+            }).fail(function () {
+                resultSpan.find('.result').show();
+                resultSpan[0].querySelector('.result').innerHTML =
+                    'Fields already in database, could not run the update.'
+            });
+        });
+    });
+</script>
+
+<div class="check-information-wrapper">
+    <?= $block->getButtonHtml() ?>
+    <div id="result_api">
+        <span class="result"></span>
+    </div>
+</div>

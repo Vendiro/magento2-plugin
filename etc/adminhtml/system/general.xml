@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>General</label>
+        <field id="version" translate="label" type="button" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Version</label>
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Config\Button\VersionCheck</frontend_model>
+        </field>
+        <field id="heading_api" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>API Credentials</label>
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Design\Heading</frontend_model>
+            <comment>You will receive your API credentials from Vendiro.</comment>
+        </field>
+        <field id="mode" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Mode</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\Mode</source_model>
+            <config_path>vendiro/general/mode</config_path>
+        </field>
+        <field id="api_key" translate="comment" type="obscure" sortOrder="12" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>API key</label>
+            <comment model="Vendiro\Connect\Model\Adminhtml\Comment\EncryptedHint" />
+            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+            <config_path>vendiro/general/api_key</config_path>
+        </field>
+        <field id="api_token" translate="comment" type="obscure" sortOrder="13" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>API token</label>
+            <comment model="Vendiro\Connect\Model\Adminhtml\Comment\EncryptedHint" />
+            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+            <config_path>vendiro/general/api_token</config_path>
+        </field>
+        <field id="validate_api_credentials" translate="label" type="button" sortOrder="14" showInDefault="1" showInWebsite="0" showInStore="0">
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Config\Button\Credentials</frontend_model>
+        </field>
+    </group>
+</include>

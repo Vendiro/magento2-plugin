@@ -1,0 +1,108 @@
+{
+    "vendiro_carrier": {
+        "column": {
+            "entity_id": true,
+            "carrier_id": true,
+            "carrier": true
+        },
+        "index": {
+            "VENDIRO_CARRIER_ENTITY_ID": true,
+            "VENDIRO_CARRIER_CARRIER_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vendiro_order": {
+        "column": {
+            "entity_id": true,
+            "order_id": true,
+            "order_entity_id": true,
+            "vendiro_id": true,
+            "marketplace_order_id": true,
+            "marketplace_name": true,
+            "marketplace_reference": true,
+            "status": true,
+            "marketplace_id": true,
+            "invoice_id": true,
+            "created_at": true,
+            "imported_at": true
+        },
+        "index": {
+            "VENDIRO_ORDER_ENTITY_ID": true,
+            "VENDIRO_ORDER_VENDIRO_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vendiro_stock": {
+        "column": {
+            "entity_id": true,
+            "created_at": true,
+            "updated_at": true,
+            "synced_at": true,
+            "product_updated_at": true,
+            "deleted": true,
+            "needs_update": true,
+            "product_sku": true
+        },
+        "index": {
+            "VENDIRO_STOCK_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vendiro_track": {
+        "column": {
+            "entity_id": true,
+            "track_id": true,
+            "status": true,
+            "created_at": true
+        },
+        "index": {
+            "VENDIRO_TRACK_ENTITY_ID": true,
+            "VENDIRO_TRACK_TRACK_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vendiro_marketplace": {
+        "column": {
+            "entity_id": true,
+            "marketplace_id": true,
+            "country_code": true,
+            "currency": true,
+            "name": true,
+            "allowed_document_types": true
+        },
+        "index": {
+            "VENDIRO_MARKETPLACE_MARKETPLACE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vendiro_invoice": {
+        "column": {
+            "entity_id": true,
+            "invoice_id": true,
+            "order_id": true,
+            "marketplace_id": true,
+            "marketplace_order_id": true
+        },
+        "index": {
+            "VENDIRO_INVOICE_INVOICE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "sales_shipment": {
+        "column": {
+            "vendiro_carrier": true
+        }
+    }
+}

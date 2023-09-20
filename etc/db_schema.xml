@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright © Vendiro. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <!-- Declaration Schema of Vendiro Carrier Table -->
+    <table name="vendiro_carrier" engine="innodb" resource="default" comment="Vendiro Carrier Table">
+        <column name="entity_id" xsi:type="int" padding="10" identity="true" nullable="false" unsigned="true" comment="Entity ID"/>
+        <column name="carrier_id" xsi:type="int" nullable="false" comment="Carrier id"/>
+        <column name="carrier" xsi:type="varchar" length="64" nullable="false" comment="Carrier"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="VENDIRO_CARRIER_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <index referenceId="VENDIRO_CARRIER_CARRIER_ID" indexType="btree">
+            <column name="carrier_id"/>
+        </index>
+    </table>
+
+    <!-- Declaration Schema of Vendiro Order Table -->
+    <table name="vendiro_order" engine="innodb" resource="default" comment="Vendiro Order Table">
+        <column name="entity_id" xsi:type="int" padding="10" identity="true" nullable="false" unsigned="true" comment="Entity ID"/>
+        <column name="order_id" xsi:type="varchar" length="32" nullable="true" comment="Order Increment ID"/>
+        <column name="order_entity_id" xsi:type="int" nullable="true" comment="Magento Order ID"/>
+        <column name="vendiro_id" xsi:type="int" nullable="true" comment="Vendiro ID"/>
+        <column name="marketplace_order_id" xsi:type="varchar" length="64" nullable="true" comment="Marketplace OrderId"/>
+        <column name="marketplace_name" xsi:type="varchar" length="64" nullable="true" comment="Marketplace Name"/>
+        <column name="marketplace_reference" xsi:type="varchar" length="32" nullable="false" comment="Marketplace reference"/>
+        <column name="status" xsi:type="varchar" length="32" nullable="false" comment="Status"/>
+        <column name="marketplace_id" xsi:type="int" padding="10" identity="false" nullable="false" unsigned="true" comment="Marketplace ID"/>
+        <column name="invoice_id" xsi:type="int" padding="10" identity="false" nullable="false" unsigned="false" comment="Invoice ID"/>
+        <column name="imported_at" xsi:type="timestamp" on_update="false" default="CURRENT_TIMESTAMP" comment="Created at"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="VENDIRO_ORDER_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <index referenceId="VENDIRO_ORDER_VENDIRO_ID" indexType="btree">
+            <column name="vendiro_id"/>
+        </index>
+    </table>
+
+    <!-- Declaration Schema of Vendiro Stock Table -->
+    <table name="vendiro_stock" engine="innodb" resource="default" comment="Vendiro Stock Table">
+        <column name="entity_id" xsi:type="int" padding="10" identity="false" nullable="false" unsigned="true" comment="Entity ID"/>
+        <column name="product_sku" xsi:type="varchar" length="64" nullable="false" comment="Product SKU"/>
+        <column name="deleted" xsi:type="smallint" padding="2" nullable="false" identity="false" unsigned="true" default="0" comment="Deleted (1/0)"/>
+        <column name="needs_update" xsi:type="smallint" padding="2" nullable="false" identity="false" unsigned="true" default="0" comment="Needs Update (1/0)"/>
+        <column name="created_at" xsi:type="timestamp" on_update="false" default="CURRENT_TIMESTAMP" comment="Created at"/>
+        <column name="updated_at" xsi:type="timestamp" on_update="true" default="CURRENT_TIMESTAMP" comment="Updated at"/>
+        <column name="synced_at" xsi:type="timestamp" on_update="false" nullable="true" comment="Last Synced At"/>
+        <column name="product_updated_at" xsi:type="timestamp" on_update="false" default="CURRENT_TIMESTAMP" comment="Product Updated At"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="VENDIRO_STOCK_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+
+    <!-- Declaration Schema of Vendiro Marketplace Table -->
+    <table name="vendiro_track" engine="innodb" resource="default" comment="Vendiro Track Table">
+        <column name="entity_id" xsi:type="int" padding="10" identity="true" nullable="false" unsigned="true" comment="Entity ID"/>
+        <column name="track_id" xsi:type="int" nullable="true" comment="Sales Shipment Track id"/>
+        <column name="status" xsi:type="varchar" length="32" nullable="false" comment="Status"/>
+        <column name="created_at" xsi:type="timestamp" on_update="false" default="CURRENT_TIMESTAMP" comment="Created at"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="VENDIRO_TRACK_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <index referenceId="VENDIRO_TRACK_TRACK_ID" indexType="btree">
+            <column name="track_id"/>
+        </index>
+    </table>
+
+    <!-- Declaration Schema of Vendiro Marketplace Table -->
+    <table name="vendiro_marketplace" engine="innodb" resource="default" comment="Vendiro Track Table">
+        <column name="entity_id" xsi:type="int" padding="10" identity="true" nullable="false" unsigned="true" comment="Entity ID"/>
+        <column name="marketplace_id" xsi:type="int" padding="10" identity="false" nullable="false" unsigned="true" comment="Marketplace ID"/>
+        <column name="country_code" xsi:type="varchar" length="64" nullable="false" comment="Country Code"/>
+        <column name="currency" xsi:type="varchar" length="64" nullable="false" comment="Currency"/>
+        <column name="name" xsi:type="varchar" length="64" nullable="false" comment="Currency"/>
+        <column name="allowed_document_types" xsi:type="varchar" length="64" nullable="false" comment="Allowed Document Types"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="VENDIRO_MARKETPLACE_MARKETPLACE_ID" indexType="btree">
+            <column name="marketplace_id"/>
+        </index>
+    </table>
+
+    <!-- Declaration Schema of Vendiro Marketplace Table -->
+    <table name="vendiro_invoice" engine="innodb" resource="default" comment="Vendiro Track Table">
+        <column name="entity_id" xsi:type="int" padding="10" identity="true" nullable="false" unsigned="true" comment="Entity ID"/>
+        <column name="invoice_id" xsi:type="int" padding="10" identity="false" nullable="false" unsigned="true" comment="Invoice ID"/>
+        <column name="order_id" xsi:type="int" nullable="true" comment="Order Id"/>
+        <column name="marketplace_id" xsi:type="int" nullable="true" comment="Marketplace Id"/>
+        <column name="marketplace_order_id" xsi:type="varchar" length="64" nullable="false" comment="Marketplace Order Id"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="VENDIRO_INVOICE_INVOICE_ID" indexType="btree">
+            <column name="invoice_id"/>
+        </index>
+    </table>
+
+    <!-- Declaration Schema of extra fields to Sales Shipment Table -->
+    <table name="sales_shipment" resource="sales" engine="innodb" comment="Sales Flat Shipment">
+        <column name="vendiro_carrier" xsi:type="varchar" length="64" nullable="true" comment="Vendiro Carrier"/>
+    </table>
+</schema>
