@@ -1,0 +1,19 @@
+{
+    "name": "vendiro/magento2-plugin",
+    "description": "Official Vendiro module for Magento 2",
+    "version": "2.0.0",
+    "require": {
+        "php": ">=7.4",
+        "magento/framework": ">=102.0.3"
+    },
+    "type": "magento2-module",
+    "license": "CC-BY-NC-ND-3.0",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Vendiro\\Connect\\": ""
+        }
+    }
+}

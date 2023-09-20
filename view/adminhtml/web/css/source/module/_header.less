@@ -1,0 +1,51 @@
+form[action*="vendiro"] {
+  //
+  //  Vendiro Header
+  //  ---------------------------------------------
+
+  .mm-ui-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 25px;
+    padding: 5rem 2rem 5rem 12rem;
+
+    border-left: 3px solid @mm-ui-branding-color-secondary;
+    background: ~'@{mm-ui-branding-color-primary} no-repeat 25px 42px / 70px';
+    font-size: 1.3rem;
+    text-align: left;
+  }
+
+  .mm-ui-header-text {
+    display: grid;
+    grid-gap: 4px;
+    margin-top: 4px;
+    color:white;
+    max-width:600px;
+
+    strong {
+      font-size: 2.4rem;
+      color:white;
+    }
+  }
+
+  .mm-ui-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  #mm-ui-button_help {
+    .button_base(@bg: @mm-ui-branding-color-button, @bg-hover: @mm-ui-branding-color-secondary);
+  }
+
+  #mm-ui-button_test {
+    .button_base(@bg: @mm-ui-branding-color-secondary, @bg-hover: @mm-ui-branding-color-secondary);
+
+    &:hover {
+      opacity: .85;
+    }
+  }
+
+}

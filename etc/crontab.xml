@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="vendiro_stock" instance="Vendiro\Connect\Cron\Stock" method="updateStock">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+        <job name="vendiro_import_to_magento" instance="Vendiro\Connect\Cron\Order" method="importToMagento">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+        <job name="vendiro_confirm_shipments" instance="Vendiro\Connect\Cron\TrackTrace" method="confirmShipment">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+        <job name="vendiro_force_queue_stock" instance="Vendiro\Connect\Cron\Stock" method="forceStockQueue">
+            <schedule>0 6 * * *</schedule>
+        </job>
+        <job name="vendiro_send_invoice" instance="Vendiro\Connect\Cron\Invoice" method="sendInvoices">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+        <job name="vendiro_update_information" instance="Vendiro\Connect\Cron\Information" method="updateInformation">
+            <schedule>0 0 * * *</schedule>
+        </job>
+    </group>
+</config>

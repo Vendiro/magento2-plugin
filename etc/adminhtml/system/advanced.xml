@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="advanced" translate="label comment" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Advanced</label>
+        <field id="heading_cron" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Scheduled Tasks</label>
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Design\Heading</frontend_model>
+            <comment>These options are only intended for expert users. Tampering with the default settings may negatively affect the workflow and performance of the Vendiro extension.</comment>
+        </field>
+        <field id="vendiro_stock" translate="label comment" sortOrder="10" type="select" showInDefault="11" showInWebsite="0" showInStore="0" canRestore="1">
+            <label>Stock updater</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\CronFrequency</source_model>
+            <backend_model>Vendiro\Connect\Model\Config\CronConfig</backend_model>
+        </field>
+        <field id="vendiro_force_queue_stock" translate="label comment" sortOrder="30" type="select" showInDefault="13" showInWebsite="0" showInStore="0" canRestore="1">
+            <label>Full stock trigger</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\CronFrequency</source_model>
+            <backend_model>Vendiro\Connect\Model\Config\CronConfig</backend_model>
+        </field>
+        <field id="vendiro_import_to_magento" translate="label comment" sortOrder="40" type="select" showInDefault="14" showInWebsite="0" showInStore="0" canRestore="1">
+            <label>Order import</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\CronFrequency</source_model>
+            <backend_model>Vendiro\Connect\Model\Config\CronConfig</backend_model>
+        </field>
+        <field id="vendiro_confirm_shipments" translate="label comment" sortOrder="50" type="select" showInDefault="15" showInWebsite="0" showInStore="0" canRestore="1">
+            <label>Shipments confirm</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\CronFrequency</source_model>
+            <backend_model>Vendiro\Connect\Model\Config\CronConfig</backend_model>
+        </field>
+        <field id="vendiro_send_invoice" translate="label comment" sortOrder="60" type="select" showInDefault="16" showInWebsite="0" showInStore="0" canRestore="1">
+            <label>Vendiro send invoice</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\CronFrequency</source_model>
+            <backend_model>Vendiro\Connect\Model\Config\CronConfig</backend_model>
+        </field>
+        <field id="vendiro_update_information" translate="label comment" sortOrder="70" type="select" showInDefault="17" showInWebsite="0" showInStore="0" canRestore="1">
+            <label>Vendiro information update</label>
+            <source_model>Vendiro\Connect\Model\Config\Source\CronFrequency</source_model>
+            <backend_model>Vendiro\Connect\Model\Config\CronConfig</backend_model>
+        </field>
+        <field id="heading_development" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Development Settings</label>
+            <frontend_model>Vendiro\Connect\Block\Adminhtml\Design\Heading</frontend_model>
+            <comment>These options are only intended for expert users.</comment>
+        </field>
+        <field id="reject_orders" translate="label comment" type="select" sortOrder="101" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+            <label>Disable reject of faulty orders</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>vendiro/advanced/disable_reject_orders</config_path>
+        </field>
+    </group>
+</include>

@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © Vendiro. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * @var $block \Vendiro\Connect\Block\Adminhtml\Design\Header
+ */
+$logo = $block->getViewFileUrl('Vendiro_Connect::images/logo.svg');
+?>
+<div class="mm-ui-header"
+     style="background-image: url(<?= $block->escapeUrl($logo) ?>);">
+    <div class="mm-ui-header-text">
+        <strong>
+            <?= $block->escapeHTML(__('Vendiro Connect')); ?>
+        </strong>
+        <div>
+            <?= $block->escapeHTML(
+                __('Connect your shop to Vendiro’s API to handle your marketplace orders within Magento.')
+            ); ?>
+        </div>
+    </div>
+    <div class="mm-ui-header-actions">
+        <a id="mm-ui-button_help" class="helpbutton" href="#"
+           target="_blank">
+            <i class="mm-ui-icon__question-circled">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path d="M17.659,3.681H8.468c-0.211,0-0.383,0.172-0.383,0.383v2.681H2.341c-0.21,0-0.383,
+                    0.172-0.383,0.383v6.126c0,0.211,0.172,0.383,0.383,0.383h1.532v2.298c0,0.566,0.554,0.368,
+                    0.653,0.27l2.569-2.567h4.437c0.21,0,0.383-0.172,0.383-0.383v-2.681h1.013l2.546,2.567c0.242,
+                    0.249,0.652,0.065,0.652-0.27v-2.298h1.533c0.211,0,0.383-0.172,0.383-0.382V4.063C18.042,
+                    3.853,17.87,3.681,17.659,3.681 M11.148,12.87H6.937c-0.102,0-0.199,0.04-0.27,0.113l-2.028,
+                    2.025v-1.756c0-0.211-0.172-0.383-0.383-0.383H2.724V7.51h5.361v2.68c0,0.21,0.172,0.382,0.383,
+                    0.382h2.68V12.87z M17.276,9.807h-1.533c-0.211,0-0.383,0.172-0.383,0.383v1.755L13.356,
+                    9.92c-0.07-0.073-0.169-0.113-0.27-0.113H8.851v-5.36h8.425V9.807z"></path>
+                </svg>
+            </i>
+            <span><?= $block->escapeHTML(__('Support')); ?></span>
+        </a>
+        <a id="mm-ui-button_test" href="#"
+           target="_blank">
+            <i class="mm-ui-icon__question-circled">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path d="M17.308,7.564h-1.993c0-2.929-2.385-5.314-5.314-5.314S4.686,4.635,4.686,7.564H2.693c-0.244,
+                    0-0.443,0.2-0.443,0.443v9.3c0,0.243,0.199,0.442,0.443,0.442h14.615c0.243,0,0.442-0.199,
+                    0.442-0.442v-9.3C17.75,7.764,17.551,7.564,17.308,7.564 M10,3.136c2.442,0,4.43,1.986,4.43,
+                    4.428H5.571C5.571,5.122,7.558,3.136,10,3.136 M16.865,16.864H3.136V8.45h13.729V16.864z M10,
+                    10.664c-0.854,0-1.55,0.696-1.55,1.551c0,0.699,0.467,1.292,1.107,1.485v0.95c0,0.243,0.2,0.442,
+                    0.443,0.442s0.443-0.199,0.443-0.442V13.7c0.64-0.193,1.106-0.786,1.106-1.485C11.55,11.36,10.854,
+                    10.664,10,10.664 M10,12.878c-0.366,0-0.664-0.298-0.664-0.663c0-0.366,0.298-0.665,
+                    0.664-0.665c0.365,0,0.664,0.299,0.664,0.665C10.664,12.58,10.365,12.878,10,12.878"></path>
+                </svg>
+            </i>
+            <span><?= $block->escapeHTML(__('API Details')); ?></span>
+        </a>
+    </div>
+</div>
+
+
+
