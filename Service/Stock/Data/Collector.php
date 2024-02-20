@@ -142,7 +142,7 @@ class Collector
             ->from(
                 ['cataloginventory_stock_item' => $this->resource->getTableName('cataloginventory_stock_item')],
                 [
-                    'qty' => 'stock'
+                    'stock' => 'qty'
                 ]
             )->joinLeft(
                 ['catalog_product_entity' => $this->resource->getTableName('catalog_product_entity')],

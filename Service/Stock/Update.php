@@ -103,7 +103,7 @@ class Update
             ];
         } catch (\Exception $exception) {
             return [
-                'success' => true,
+                'success' => false,
                 'message' => $exception->getMessage()
             ];
         }
