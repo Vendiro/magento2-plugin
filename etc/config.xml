@@ -9,7 +9,7 @@
     <default>
         <vendiro>
             <general>
-                <version>v2.0.0</version>
+                <version>v2.0.1</version>
                 <debug>0</debug>
             </general>
             <advanced>
